@@ -1,5 +1,6 @@
 import m from "mithril"
 import PaymentMethod from "./payment_method"
+import PN from "../pnlib"
 
 const Payment = {
     list: [],
@@ -23,9 +24,7 @@ const Payment = {
 
     setToday: function() {
 	const today = new Date();
-	Payment.paid_date = String(today.getFullYear()) + "-"
-	    + String(today.getMonth() + 1) + "-"
-	    + String(today.getDate());
+	Payment.paid_date = PN.formatDate(today);
     },
 
     save: function() {
