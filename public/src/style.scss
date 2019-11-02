@@ -1,0 +1,41 @@
+@import "~bootstrap/scss/bootstrap";
+
+main > .container {
+  padding: 20px 15px 0;
+}
+
+.navbar-nav .material-icons {
+    font-size: 16px;
+    padding-right: 2px;
+}
+
+.icon-btn .material-icons {
+    font-size: 16px;
+}
+
+.history .date {
+    width: 3.5em;
+}
+
+.history .amount {
+    text-align: right;
+    width: 6em;
+}
+
+.history .recipient-method {
+    width: calc(100% - 6em - 3.5em);
+}
+
+.history .recipient-method .recipient {
+    display: inline;
+}
+
+.history .recipient-method .method {
+    display: inline;
+    font-size: small;
+    padding: 0.1em 0.3em 0.1em 0.3em;
+    margin: 0 0.1em 0 1em;
+    color: navy;
+    border: solid 1px navy;
+    border-radius: 0.3em;
+}

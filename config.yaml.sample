@@ -1,0 +1,9 @@
+session_expire: 31536000 # 1year
+session_secret: "replace me"
+omniauth:
+  google_oauth2:
+    client_id: "replace me"
+    secret: "replace me"
+gcp:
+  project_id: paynote
+  credentials: PayNote-568ec574331c.json

@@ -1,0 +1,23 @@
+indexes:
+- kind: PaymentMethod
+  properties:
+  - name: user_id
+  - name: last_used_at
+    direction: desc
+
+- kind: Pament
+  properties:
+  - name: user_id
+  - name: paid_date
+    direction: asc
+
+- kind: Payment
+  properties:
+  - name: user_id
+  - name: paid_date
+
+- kind: Pament
+  properties:
+  - name: user_id
+  - name: paid_date
+    direction: desc
