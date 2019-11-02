@@ -1,5 +1,8 @@
-session_expire: 31536000 # 1year
 session_secret: "replace me"
+redis:
+  server: localhost
+  port: 6379
+  password: 
 omniauth:
   google_oauth2:
     client_id: "replace me"

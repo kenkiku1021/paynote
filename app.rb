@@ -11,8 +11,9 @@ Dir.glob('./{helpers,models,lib}/*.rb').each { |file| require file }
 config = AppConfig.instance
 
 configure do
-  set :sessions, :expire_after => config.session_expire
-  set :session_secret, config.session_secret
+  use Rack::Session::Redis,
+      :redis_server => config.redis,
+      :expires_in => config.session_expire
 end
 
 use OmniAuth::Builder do
