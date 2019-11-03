@@ -80,12 +80,15 @@ const PaymentMethodSelectView = {
 const HistoryPage = {
     oninit: function(vnode) {
 	if(!User.authorized()) {
-	    m.route.set("/login");
+	    User.fetch().then(function() {
+		if(!User.authorized()) {
+		    m.route.set("/login");
+		}
+	    });
 	}
-	else {
-	    Payment.initHistoryMonth();
-	    Payment.fetch();
-	}
+	Payment.initHistoryMonth();
+	Payment.fetch();
+	PaymentMethod.fetch();
     },
 
     view: function(vnode) {

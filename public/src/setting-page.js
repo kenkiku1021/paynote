@@ -47,7 +47,11 @@ const PaymentMethodEditor = {
 const SettingPage = {
     oninit: function(vnode) {
 	if(!User.authorized()) {
-	    m.route.set("/login");
+	    User.fetch().then(function() {
+		if(!User.authorized()) {
+		    m.route.set("/login");
+		}
+	    });
 	}
 	PaymentMethod.fetch();
     },
