@@ -12,6 +12,9 @@ const Payment = {
     recipient: "",
     amount: 0,
     description: "",
+    filter: {
+	method: 0,
+    },
 
     clear: function() {
 	const method = PaymentMethod.last();
@@ -102,8 +105,14 @@ const Payment = {
 	}
     },
 
+    filteredList: function() {
+	return Payment.list.filter(function(payment) {
+	    return Payment.filter.method === 0 ? true : payment.method_id === Payment.filter.method;
+	});
+    },
+
     sum: function() {
-	return Payment.list.map(function(payment) {
+	return Payment.filteredList().map(function(payment) {
 	    return payment.amount;
 	}).reduce(function(acc, cur) {
 	    return acc + cur;

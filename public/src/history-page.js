@@ -50,13 +50,29 @@ const YearSelectView = {
 const MonthSelectView = {
     view: function(vnode) {
 	const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-	return m("select.form-control",
+	return m("select.form-control.mr-2",
 		 {value: Payment.month,
 		  onchange: function(e) {
 		      Payment.setMonth(e.target.value);
 		  }},
 		 months.map(function(month) {
 		     return m("option", {value: month}, [month, "月"]);
+		 }));
+    },
+}
+
+const PaymentMethodSelectView = {
+    view: function(vnode) {
+	const payments = [{id: 0, name: "すべて"}].concat(PaymentMethod.list);
+	return m("select.form-control",
+		 {value: Payment.filter.method,
+		  onclick: function(e) {
+		      Payment.filter.method = Number(e.target.value);
+		  }},
+		 payments.map(function(method) {
+		     return m("option",
+			      {value: method.id},
+			      method.name);
 		 }));
     },
 }
@@ -84,9 +100,12 @@ const HistoryPage = {
 		    m(".col", [
 			m(MonthSelectView),
 		    ]),
+		    m(".col.d-none.d-sm-block", [
+			m(PaymentMethodSelectView),
+		    ]),
 		]),
 		m("ul.list-group.history.mt-2", [
-		    Payment.list.map(function(payment) {
+		    Payment.filteredList().map(function(payment) {
 			return m(PaymentItemView, {payment: payment});
 		    }),
 		    m(PaymentSumView, Payment.sum()),
