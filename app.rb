@@ -52,12 +52,16 @@ get "/auth/:provider/callback" do
   redirect to("/")
 end
 
+post "/logout" do
+  session.clear
+end
+
 post "/user" do
   result = {
     id: @user ? @user.id : nil,
     created_at: @user ? @user.created_at : nil,
     authorized: !@user.nil?,
-    start_year: @user.start_year,
+    start_year: @user ? @user.start_year : nil,
   }
 
   json result

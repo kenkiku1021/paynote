@@ -53,6 +53,10 @@ const UI = {
 		    m(UI.MatIcon, "settings_applications"),
 		    "Setting",
 		]),
+		m(UI.NavMenuItem, {href: "/logout"}, [
+		    m(UI.MatIcon, "exit_to_app"),
+		    "Logout",
+		]),
 	    ]);
 	},
     },

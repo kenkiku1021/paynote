@@ -23,6 +23,7 @@ const Payment = {
 	Payment.recipient = "";
 	Payment.amount = 0;
 	Payment.description = "";
+	Payment.filter.method = 0;
     },
 
     setToday: function() {
